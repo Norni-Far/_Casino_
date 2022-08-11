@@ -23,13 +23,13 @@ public class GameController : MonoBehaviour
     private IWheel[] IWheels;
     private Wheel[] WheelsScripts;
 
-    private int generalNumberOfWheels;
-    private int startNumberOfWheels;
+    private int _generalNumberOfWheels;
+    private int _startNumberOfWheels;
 
     #region Start
     private void Start()
     {
-        generalNumberOfWheels = wheelsObjects.Length;
+        _generalNumberOfWheels = wheelsObjects.Length;
 
         IWheels = new IWheel[wheelsObjects.Length];
         WheelsScripts = new Wheel[wheelsObjects.Length];
@@ -65,7 +65,7 @@ public class GameController : MonoBehaviour
     public void StrartGame()
     {
         startButton.interactable = false;
-        startNumberOfWheels = 0;
+        _startNumberOfWheels = 0;
 
         StartCoroutine(StartRotate());
     }
@@ -94,12 +94,12 @@ public class GameController : MonoBehaviour
     }
     #endregion
 
-    private void AddNumberForEnd() => startNumberOfWheels++;
+    private void AddNumberForEnd() => _startNumberOfWheels++;
 
     #region EndGame
     private void CheckForEndGame()
     {
-        if (generalNumberOfWheels == startNumberOfWheels)
+        if (_generalNumberOfWheels == _startNumberOfWheels)
         {
             bool isWin = true;
 
@@ -107,7 +107,7 @@ public class GameController : MonoBehaviour
 
             for (int i = 0; i < WheelsScripts.Length; i++)
             {
-                if (WheelsScripts[0].numOfChoosenWheel != WheelsScripts[i].numOfChoosenWheel)
+                if (WheelsScripts[0]._numOfChoosenWheel != WheelsScripts[i]._numOfChoosenWheel)
                 {
                     isWin = false;
                     break;
